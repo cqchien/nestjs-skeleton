@@ -1,4 +1,5 @@
 import { IPageMetaDtoParameters } from 'common/interfaces/page.interface';
+
 import { BooleanField, NumberField } from '../../../decorators';
 
 export class PageMetaDto {

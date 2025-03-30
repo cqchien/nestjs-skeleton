@@ -1,4 +1,5 @@
 import { applyDecorators } from '@nestjs/common';
+import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   IsBoolean,
@@ -19,6 +20,7 @@ import {
   NotEquals,
   ValidateNested,
 } from 'class-validator';
+import { Constructor } from 'types';
 
 import {
   ToArray,
@@ -32,8 +34,6 @@ import {
   IsTmpKey as IsTemporaryKey,
   IsUndefinable,
 } from './validator.decorators';
-import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
-import { Constructor } from 'types';
 
 interface IFieldOptions {
   each?: boolean;
@@ -219,12 +219,10 @@ export function TmpKeyFieldOptional(
   return applyDecorators(IsUndefinable(), TmpKeyField({ ...options }));
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function EnumField<TEnum extends object>(
   getEnum: () => TEnum,
   options: IEnumFieldOptions = {},
 ): PropertyDecorator {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/ban-types
   const enumValue = getEnum();
   const decorators = [IsEnum(enumValue, { each: options.each })];
 
@@ -278,7 +276,6 @@ export function ClassField<TClass extends Constructor>(
   return applyDecorators(...decorators);
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function EnumFieldOptional<TEnum extends object>(
   getEnum: () => TEnum,
   options: IEnumFieldOptions = {},

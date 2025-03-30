@@ -8,27 +8,24 @@ import { PageMetaDto } from './common/dto/response/page-meta.dto';
 declare global {
   export type Uuid = string & { _uuidBrand: undefined };
 
-  namespace NodeJS {
-    interface ProcessEnv {
-      PORT: number;
-      NODE_ENV: 'development' | 'staging' | 'production';
-      GH_TOKEN: string;
-      ENABLE_ORM_LOGS: boolean;
+  export interface ProcessEnv {
+    PORT?: string;
+    NODE_ENV: 'development' | 'staging' | 'production';
+    ENABLE_ORM_LOGS?: string;
 
-      API_VERSION: string;
-      JWT_EXPIRATION_TIME: number;
-      JWT_PRIVATE_KEY: string;
+    API_VERSION?: string;
+    JWT_EXPIRATION_TIME?: string;
+    JWT_PRIVATE_KEY?: string;
 
-      DB_HOST: string;
-      DB_PORT: number;
-      DB_USERNAME: string;
-      DB_PASSWORD: string;
-      DB_DATABASE: string;
+    DB_HOST?: string;
+    DB_PORT?: string;
+    DB_USERNAME?: string;
+    DB_PASSWORD?: string;
+    DB_DATABASE?: string;
 
-      REDIS_CACHE_ENABLED: boolean;
-      REDIS_HOST: string;
-      REDIS_PORT: number;
-    }
+    REDIS_CACHE_ENABLED?: string;
+    REDIS_HOST?: string;
+    REDIS_PORT?: string;
   }
 }
 

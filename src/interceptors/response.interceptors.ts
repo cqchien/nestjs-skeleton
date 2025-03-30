@@ -9,6 +9,7 @@ import { Injectable } from '@nestjs/common';
 import { MetaResponseDto, ResponseDto } from 'common/dto/response/response.dto';
 import type { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
 import { mapToHttpException } from './error-mapper';
 
 @Injectable()
