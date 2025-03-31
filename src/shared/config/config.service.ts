@@ -4,8 +4,10 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import path from 'path';
 import { SnakeNamingStrategy } from 'snake-naming.strategy';
 
+import { ConfigServiceInterface } from './config.interface';
+
 @Injectable()
-export class ConfigService {
+export class ConfigService implements ConfigServiceInterface {
   constructor(private readonly configService: NestConfigService) {}
 
   get databaseConfig(): TypeOrmModuleOptions {

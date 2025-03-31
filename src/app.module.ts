@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule as NestConfigModule} from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from 'shared/config/config.module';
 
 import { ConfigServiceInterface } from './shared/config/config.interface';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
+    NestConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
     }),

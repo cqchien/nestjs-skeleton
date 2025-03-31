@@ -92,3 +92,5 @@ export async function bootstrap(): Promise<void> {
   await app.listen(port);
   console.info(`Server is running on http://localhost:${port}`);
 }
+
+bootstrap();

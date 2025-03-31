@@ -1,15 +1,16 @@
 import { Global, Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+
+import { ConfigService } from './config.service';
 
 @Global()
 @Module({
-  imports: [ConfigService],
+  imports: [],
   providers: [
     {
       provide: 'ConfigServiceInterface',
       useClass: ConfigService,
     },
   ],
-  exports: ['ConfigInterface'],
+  exports: ['ConfigServiceInterface'],
 })
 export class ConfigModule {}
