@@ -1,4 +1,4 @@
-import { NumberFieldOptional } from '../../../decorators';
+import { NumberFieldOptional } from '../../../decorators/field.decorators';
 
 export class PageOptionsDto {
   @NumberFieldOptional({
