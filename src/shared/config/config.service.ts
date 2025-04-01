@@ -21,14 +21,14 @@ export class ConfigService implements ConfigServiceInterface {
     return {
       entities,
       migrations,
-      type: 'postgres',
+      type: 'mongodb',
       host: this.getString('DB_HOST'),
       port: this.getNumber('DB_PORT'),
       username: this.getString('DB_USERNAME'),
       password: this.getString('DB_PASSWORD'),
       database: this.getString('DB_DATABASE'),
       migrationsRun: true,
-      logging: this.getBoolean('ENABLE_ORM_LOGS'),
+      logging: this.getBoolean('DB_LOGGING'),
       namingStrategy: new SnakeNamingStrategy(),
     };
   }

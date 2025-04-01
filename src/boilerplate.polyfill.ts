@@ -9,23 +9,19 @@ declare global {
   export type Uuid = string & { _uuidBrand: undefined };
 
   export interface ProcessEnv {
-    PORT?: string;
-    NODE_ENV: 'development' | 'staging' | 'production';
-    ENABLE_ORM_LOGS?: string;
+    NODE_ENV: 'development' | 'production' | 'test';
+    PORT: string;
+    API_VERSION: string;
 
-    API_VERSION?: string;
-    JWT_EXPIRATION_TIME?: string;
-    JWT_PRIVATE_KEY?: string;
+    JWT_SECRET: string;
+    JWT_EXPIRATION: string;
 
-    DB_HOST?: string;
-    DB_PORT?: string;
-    DB_USERNAME?: string;
-    DB_PASSWORD?: string;
-    DB_DATABASE?: string;
-
-    REDIS_CACHE_ENABLED?: string;
-    REDIS_HOST?: string;
-    REDIS_PORT?: string;
+    DB_HOST: string;
+    DB_PORT: number;
+    DB_USERNAME: string;
+    DB_PASSWORD: string;
+    DB_DATABASE: string;
+    DB_LOGGING: string;
   }
 }
 

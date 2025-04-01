@@ -1,22 +1,38 @@
 services:
-  postgres:
-    image: postgres
-    container_name: postgres
+  # postgres:
+  #   image: postgres
+  #   container_name: postgres
+  #   restart: always
+  #   platform: linux/amd64
+  #   environment:
+  #     POSTGRES_USERNAME: '${DB_USERNAME}'
+  #     POSTGRES_PASSWORD: '${DB_PASSWORD}'
+  #     TZ: 'GMT'
+  #     PGTZ: 'GMT'
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - '5432:5432'
+  #   volumes:
+  #     - 'db_data:/var/lib/postgresql/data'
+  #     - ./config/init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
     restart: always
     platform: linux/amd64
     environment:
-      POSTGRES_USERNAME: '${DB_USERNAME}'
-      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      MONGO_INITDB_ROOT_USERNAME: '${DB_USERNAME}'
+      MONGO_INITDB_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MONGO_INITDB_DATABASE: '${DB_DATABASE}'
       TZ: 'GMT'
-      PGTZ: 'GMT'
     env_file:
       - .env
     ports:
-      - '5432:5432'
+      - '27017:27017'
     volumes:
-      - 'db_data:/var/lib/postgresql/data'
-      - ./config/init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
-
+      - db_data:/data/db # Persist data
 volumes:
   db_data:
     driver: local
